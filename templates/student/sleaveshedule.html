@@ -1,0 +1,16 @@
+{% extends 'student/dash.html' %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+{% block content %}
+
+<form method="post" enctype="multipart/form-data" style="background-color:white;width:500px;height:500px;margin-left:200px;color:black;margin-top:70px;">
+<div style="margin-left:100px;margin-top:70px;">
+    <br>
+    <h2>Leave</h2><br>
+    {% csrf_token %}
+    {{form|crispy}}
+    <br>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</div>
+</form>
+{% endblock %}

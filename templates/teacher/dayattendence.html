@@ -1,0 +1,54 @@
+{% extends 'Teacher/dash.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+
+
+<div class="col-lg-6 grid-margin stretch-card">
+              <div class="card" style="width:1000px;color:black;">
+                <div class="card-body">
+                  <h4 class="card-title">STUDENTS ATTENDANCE</h4>
+                    <br><br>
+<!--                  <p class="card-description">-->
+<!--                    Add class <code>.table-hover</code>-->
+<!--                  </p>-->
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+
+                          <th><b>SI.NO</b></th>
+                          <th><b>Student id</b></th>
+                          <th><b>Name</b></th>
+                          <th><b>Attendance</b></th>
+
+                          <th><b>Time</b></th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in attend %}
+                      <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i.student.sid}}</td>
+                        <td>{{i.student.name}}</td>
+                        <td>{{i.attendance}}</td>
+                        <td>{{i.time}}</td>
+                      </tr>
+                     {% endfor %}
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+{% endblock %}

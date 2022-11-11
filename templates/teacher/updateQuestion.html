@@ -1,0 +1,14 @@
+{% extends 'teacher/dash.html' %}
+
+{% block content %}
+{% load crispy_forms_filters %}
+<div style="background-color:blue;width:500px;margin-left:150px;">
+<form method="post" enctype="multipart/form-data" style="color:white;margin-left:100px;">
+    {% csrf_token %}
+<!--{{form}}-->
+{{form|crispy}}
+<br>
+<button type="submit">Update</button>
+</form>
+</div>
+{% endblock %}

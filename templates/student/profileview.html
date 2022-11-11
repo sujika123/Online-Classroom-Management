@@ -1,0 +1,111 @@
+{% extends 'student/dash.html' %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+{% block content %}
+
+
+<div class="row column3" style="height:600px; width: 1000px;">
+<!-- testimonial -->
+ <div class="col-md-6">
+                           <div class="dark_bg full margin_bottom_30">
+                              <div class="full graph_head">
+                                 <div class="heading1 margin_0">
+                                    <h2>Profile</h2>
+                                 </div>
+                              </div>
+                              <div class="full graph_revenue">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="content testimonial">
+
+                                           {% csrf_token %}
+       {% for i in data %}
+    <div style="margin-top:50px;margin-left:30px;color:white;">
+
+      <div><img src="{{i.photo.url}}" width="150px" height="150px"></div>
+        <br><br>
+      <div style="color: white;">
+        <p style="color: white;">Name : {{i.name}}</p>
+        <p style="color: white;">Student id : {{i.sid}}</p>
+        <p style="color: white;">Gender : {{i.gender}}</p>
+        <p style="color: white;">Dob : {{i.dob}}</p>
+        <p style="color: white;">Age : {{i.age}}</p>
+        <p style="color: white;">Address : {{i.address}}</p>
+        <p style="color: white;">Phone number : {{i.phone}}</p>
+        <p style="color: white;">Semester : {{i.semester}}</p>
+        <p style="color: white;">Department : {{i.dept}}</p>
+        <p></p>
+      </div>
+
+  </div>
+ {% endfor %}
+
+
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- end testimonial -->
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--<div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">-->
+<!--                    <div class="bg-white rounded shadow position-relative" style="z-index: 1;width:400px;">-->
+<!--                        <div class="border-bottom py-4 px-5 mb-4">-->
+<!--                            <h4 class="text-primary mb-1">Profile</h4>-->
+
+<!--                        </div>-->
+<!--&lt;!&ndash;                        <div class="p-5 pt-0">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <h1 class="display-5 mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>99.00<small&ndash;&gt;-->
+<!--&lt;!&ndash;                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </h1>&ndash;&gt;-->
+
+<!--                            <form method ='post' enctype="multipart/form-data">-->
+<!--    {% csrf_token %}-->
+<!--       {% for i in data %}-->
+<!--    <div style="margin-top:50px;margin-left:30px;color:black;">-->
+
+<!--  <ul class="list-group list-group-flush">-->
+<!--      <li><div><img src="{{i.photo.url}}" width="100px" height="100px"></div></li>&nbsp;-->
+<!--    <li class="list-group-item">Name : {{i.name}}</li>-->
+<!--    <li class="list-group-item">Student id: {{i.sid}}</li>-->
+<!--    <li class="list-group-item">Gender : {{i.gender}}</li>-->
+<!--    <li class="list-group-item">Dob : {{i.dob}}</li>-->
+<!--    <li class="list-group-item">Age : {{i.age}}</li>-->
+<!--    <li class="list-group-item">Address : {{i.address}}</li>-->
+<!--    <li class="list-group-item">Phone number : {{i.phone}} </li>-->
+<!--    <li class="list-group-item">Semester : {{i.semester}}</li>-->
+<!--    <li class="list-group-item">Department : {{i.dept}}</li>-->
+
+
+<!--  </ul>-->
+<!--  </div>-->
+<!-- {% endfor %}-->
+<!--</form><br><br>-->
+
+
+<!--&lt;!&ndash;                            <div class="d-flex justify-content-between mb-3"><span>HTML5 & CSS3</span></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="d-flex justify-content-between mb-3"><span>Bootstrap v5</span></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="d-flex justify-content-between mb-3"><span>Responsive Layout</span></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="d-flex justify-content-between mb-2"><span>Cross-browser Support</span></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a href="" class="btn btn-primary py-2 px-4 mt-4">Order Now</a>&ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+
+
+{% endblock %}
