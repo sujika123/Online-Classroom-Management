@@ -2,6 +2,42 @@
 {% load crispy_forms_filters %}
 {% block content %}
 
+<div class="row column4 graph" style="height : 500px; width : 1000px;">
+    <div class="col-md-6 margin_bottom_30" >
+        <div class="dash_blog" >
+            <div class="dash_blog_inner">
+                <div class="dash_head">
+                    <H3>ATTENDANCE</H3>
+                </div>
+                <br><br>
+                <div class="task_list_main">
+                    <ul class="task_list">
+                        <form method="post" enctype="multipart/form-data" style="color:black;margin-left:80px;">
+                            {% csrf_token %}
+                            {{form|crispy}}
+                    </ul>
+                </div>
+                <div style="margin-left:80px;margin-top: 50px;color:black;">
+                <input type="radio" name="attendance" value="present">Present<br><br>
+                <input type="radio" name="attendance" value="absent">Absent<br>
+                </div>
+                <div class="read_more">
+                    <div class="center"><button class="main_bt read_bt" type = "submit">Submit</button></div>
+<!--                                    <div class="center"><a class="main_bt read_bt" href="#">Read More</a></div>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
 <!--<form method="post" enctype="multipart/form-data" style="background-color:blue;width:500px;height:500px;margin-left:200px;color:white;margin-top:70px;">-->
 <!--<div style="margin-left:100px;margin-top:70px;">-->
 <!--    <br><br>-->
@@ -17,35 +53,35 @@
 <!--</div>-->
 <!--</form>-->
 
-<div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
-                    <div class="bg-white rounded shadow position-relative" style="z-index: 1;width:400px;">
-                        <div class="border-bottom py-4 px-5 mb-4">
-                            <h2 class="text-primary mb-1">Attendance</h2>
+<!--<div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">-->
+<!--                    <div class="bg-white rounded shadow position-relative" style="z-index: 1;width:400px;">-->
+<!--                        <div class="border-bottom py-4 px-5 mb-4">-->
+<!--                            <h2 class="text-primary mb-1">Attendance</h2>-->
 
-                        </div>
-                        <form method ='post' enctype="multipart/form-data">
-       {% csrf_token %}
-       {% for i in att %}
-    <div style="margin-top:50px;margin-left:30px;color:black;">
+<!--                        </div>-->
+<!--                        <form method ='post' enctype="multipart/form-data">-->
+<!--       {% csrf_token %}-->
+<!--       {% for i in att %}-->
+<!--    <div style="margin-top:50px;margin-left:30px;color:black;">-->
 
-  <ul class="list-group list-group-flush">
-      <li><div><img style="height: 170px;width: 160px;" src="{{i.image.url}}" ></div></li>&nbsp;
-    <li class="list-group-item">Name : {{i.name}}</li>
-    <li class="list-group-item">Student's id : {{i.sid}}</li>
-    <li class="list-group-item">Subject : {{i.subject}}</li>
-    <li class="list-group-item">Date : {{i.date}}</li>
-    <li class="list-group-item">Time : {{i.time}} </li>
+<!--  <ul class="list-group list-group-flush">-->
+<!--      <li><div><img style="height: 170px;width: 160px;" src="{{i.image.url}}" ></div></li>&nbsp;-->
+<!--    <li class="list-group-item">Name : {{i.name}}</li>-->
+<!--    <li class="list-group-item">Student's id : {{i.sid}}</li>-->
+<!--    <li class="list-group-item">Subject : {{i.subject}}</li>-->
+<!--    <li class="list-group-item">Date : {{i.date}}</li>-->
+<!--    <li class="list-group-item">Time : {{i.time}} </li>-->
 
 
-<!-- <a class="btn btn-primary" href="#">Submit</a>-->
-  </ul>
-  </div>
- {% endfor %}
-    <input type="radio" name="attendance" value="present">Present<br>
-    <input type="radio" name="attendance" value="absent">Absent<br>
+<!--&lt;!&ndash; <a class="btn btn-primary" href="#">Submit</a>&ndash;&gt;-->
+<!--  </ul>-->
+<!--  </div>-->
+<!-- {% endfor %}-->
+<!--    <input type="radio" name="attendance" value="present">Present<br>-->
+<!--    <input type="radio" name="attendance" value="absent">Absent<br>-->
 
-<br>
-                            <button class="btn btn-primary" type="submit">Submit</button>
+<!--<br>-->
+<!--                            <button class="btn btn-primary" type="submit">Submit</button>-->
 
 
 

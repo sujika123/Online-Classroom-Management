@@ -3,14 +3,41 @@
 {% load crispy_forms_filters %}
 {% block content %}
 
-<form method="post" enctype="multipart/form-data" style="background-color:white;width:500px;height:500px;margin-left:200px;color:black;margin-top:70px;">
-<div style="margin-left:100px;margin-top:70px;">
-    <br>
-    <h2>Leave</h2><br>
-    {% csrf_token %}
-    {{form|crispy}}
-    <br>
-    <button class="btn btn-primary" type="submit">Submit</button>
-</div>
-</form>
+<div class="row column4 graph" style="height : 500px; width : 1000px;">
+    <div class="col-md-6 margin_bottom_30" >
+        <div class="dash_blog" >
+            <div class="dash_blog_inner">
+                <div class="dash_head">
+                    <H3>LEAVE</H3>
+                </div>
+                <br><br>
+                <div class="task_list_main">
+                    <ul class="task_list">
+                        <form method="post" enctype="multipart/form-data" style="color:black;margin-left:80px;">
+                            {% csrf_token %}
+                            {{form|crispy}}
+                    </ul>
+                </div>
+                <div class="read_more">
+                    <div class="center"><button class="main_bt read_bt" type = "submit">Submit</button></div>
+<!--                                    <div class="center"><a class="main_bt read_bt" href="#">Read More</a></div>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<!--<form method="post" enctype="multipart/form-data" style="background-color:white;width:500px;height:500px;margin-left:200px;color:black;margin-top:70px;">-->
+<!--<div style="margin-left:100px;margin-top:70px;">-->
+<!--    <br>-->
+<!--    <h2>Leave</h2><br>-->
+<!--    {% csrf_token %}-->
+<!--    {{form|crispy}}-->
+<!--    <br>-->
+<!--    <button class="btn btn-primary" type="submit">Submit</button>-->
+<!--</div>-->
+<!--</form>-->
 {% endblock %}

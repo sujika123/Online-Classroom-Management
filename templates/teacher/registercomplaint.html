@@ -1,35 +1,68 @@
 {% extends 'teacher/dash.html' %}
 {% block content %}
 {% load crispy_forms_filters %}
-<div class="col-lg-8">
-    <div class="card" style="width: 600px;">
-        <div class="card-header">
-            <strong class="card-title">Register Complaint</strong>
-        </div>
-        <div class="card-body">
-            <!-- Credit Card -->
-            <div id="pay-invoice">
-                <div class="card-body">
 
-                    <form method="post">{% csrf_token%}
-                        <div class="form-group">
+<div class="row column4 graph" style="height : 500px; width : 1000px;">
+    <div class="col-md-6 margin_bottom_30" >
+        <div class="dash_blog" >
+            <div class="dash_blog_inner">
+                <div class="dash_head">
+                    <H3>REGISTER COMPLAINT</H3>
+                </div>
+                <br><br>
+                <div class="task_list_main">
+                    <ul class="task_list">
+                        <form method="post" enctype="multipart/form-data" style="color:black;margin-left:80px;">
+                            {% csrf_token %}
                             {{form|crispy}}
-                        </div>
-
-                        <div class="form-actions form-group ">
-                            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-                        </div>
-                        {% for message in messages %}
-                        <div class="alert alert-primary" role="alert">
-                            {{message}}
-                        </div>
-                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="read_more">
+                    <div class="center"><button class="main_bt read_bt" type = "submit">Submit</button></div>
+<!--                                    <div class="center"><a class="main_bt read_bt" href="#">Read More</a></div>-->
                     </form>
                 </div>
             </div>
-
         </div>
-    </div> <!-- .card -->
+    </div>
 
-</div>
+
+
+
+
+
+
+
+
+<!--<div class="col-lg-8">-->
+<!--    <div class="card" style="width: 600px;">-->
+<!--        <div class="card-header">-->
+<!--            <strong class="card-title">Register Complaint</strong>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--            &lt;!&ndash; Credit Card &ndash;&gt;-->
+<!--            <div id="pay-invoice">-->
+<!--                <div class="card-body">-->
+
+<!--                    <form method="post">{% csrf_token%}-->
+<!--                        <div class="form-group">-->
+<!--                            {{form|crispy}}-->
+<!--                        </div>-->
+
+<!--                        <div class="form-actions form-group ">-->
+<!--                            <button type="submit" class="btn btn-primary btn-sm">Submit</button>-->
+<!--                        </div>-->
+<!--                        {% for message in messages %}-->
+<!--                        <div class="alert alert-primary" role="alert">-->
+<!--                            {{message}}-->
+<!--                        </div>-->
+<!--                        {% endfor %}-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </div> &lt;!&ndash; .card &ndash;&gt;-->
+
+<!--</div>-->
 {% endblock %}

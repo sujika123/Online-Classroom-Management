@@ -3,27 +3,54 @@
 {% load crispy_forms_filters %}
 {% block content %}
 
-<form method="post" enctype="multipart/form-data" style="margin-left:200px;margin-top:30px;width:450px;background-color:blue;color:white;">
-<div style="margin-left:67px;">
- <br>
+<div class="row column4 graph" style="height : 500px; width : 1000px;">
+    <div class="col-md-6 margin_bottom_30" >
+        <div class="dash_blog" >
+            <div class="dash_blog_inner">
+                <div class="dash_head">
+                    <H3>STUDENTS REGISTRATION</H3>
+                </div>
+                <br><br>
+                <div class="task_list_main">
+                    <ul class="task_list">
+                        <form method="post" enctype="multipart/form-data" style="color:black;margin-left:80px;">
+                            {% csrf_token %}
+                            {{form|crispy}}
+                            {{form1|crispy}}
+                    </ul>
+                </div>
+                <div class="read_more">
+                    <div class="center"><button class="main_bt read_bt" type = "submit">Submit</button></div>
+<!--                                    <div class="center"><a class="main_bt read_bt" href="#">Read More</a></div>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<h2>Students Registration</h2>
-    <br>
-    {% csrf_token %}
-{{form|crispy}}
-{{form1|crispy}}
-<br>
 
- <div class="col-12">
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
 
-<!--<div class="d-grid gap-2 d-md-flex justify-content-md-end">-->
-<!--<button class="btn btn-primary me-md-2" type="Submit">Submit</button>-->
-<!--</div>-->
-<br><br>
- </div>
-</form>
+<!--<form method="post" enctype="multipart/form-data" style="margin-left:200px;margin-top:30px;width:450px;background-color:blue;color:white;">-->
+<!--<div style="margin-left:67px;">-->
+<!-- <br>-->
+
+<!--<h2>Students Registration</h2>-->
+<!--    <br>-->
+<!--    {% csrf_token %}-->
+<!--{{form|crispy}}-->
+<!--{{form1|crispy}}-->
+<!--<br>-->
+
+<!-- <div class="col-12">-->
+<!--    <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--  </div>-->
+
+<!--&lt;!&ndash;<div class="d-grid gap-2 d-md-flex justify-content-md-end">&ndash;&gt;-->
+<!--&lt;!&ndash;<button class="btn btn-primary me-md-2" type="Submit">Submit</button>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<br><br>-->
+<!-- </div>-->
+<!--</form>-->
 
 
 {% endblock %}

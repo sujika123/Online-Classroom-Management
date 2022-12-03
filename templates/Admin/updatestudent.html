@@ -2,13 +2,44 @@
 
 {% block content %}
 {% load crispy_forms_filters %}
-<div style="background-color:blue;width:500px;margin-left:150px;">
-<form method="post" enctype="multipart/form-data" style="color:white;margin-left:100px;">
-    {% csrf_token %}
-<!--{{form}}-->
-{{form|crispy}}
-<br>
-<button type="submit">Update</button>
-</form>
-</div>
+
+<div class="row column4 graph" style="height : 500px; width : 1000px;">
+    <div class="col-md-6 margin_bottom_30" >
+        <div class="dash_blog" >
+            <div class="dash_blog_inner">
+                <div class="dash_head">
+                    <H3>UPDATE STUDENT</H3>
+                </div>
+                <br><br>
+                <div class="task_list_main">
+                    <ul class="task_list">
+                        <form method="post" enctype="multipart/form-data" style="color:black;margin-left:80px;">
+                            {% csrf_token %}
+                            {{form|crispy}}
+                    </ul>
+                </div>
+                <div class="read_more">
+                    <div class="center"><button class="main_bt read_bt" type = "submit">Submit</button></div>
+<!--                                    <div class="center"><a class="main_bt read_bt" href="#">Read More</a></div>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+<!--<div style="background-color:blue;width:500px;margin-left:150px;">-->
+<!--<form method="post" enctype="multipart/form-data" style="color:white;margin-left:100px;">-->
+<!--    {% csrf_token %}-->
+<!--&lt;!&ndash;{{form}}&ndash;&gt;-->
+<!--{{form|crispy}}-->
+<!--<br>-->
+<!--<button type="submit">Update</button>-->
+<!--</form>-->
+<!--</div>-->
 {% endblock %}

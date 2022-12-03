@@ -177,11 +177,6 @@ def studentview_attendance(request):
 # EXAM
 ## Student View Questions
 
-# def question_view_stdnt(request):
-#     u = request.user
-#     data = Question.objects.all()
-#     return render(request, 'student/sview_question.html', {'data': data})
-#
 
 def take_test(request):
     if request.method == 'POST':
