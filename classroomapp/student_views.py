@@ -13,9 +13,9 @@ from classroomapp.models import courseadd, studentadd, notificationadd, stdleave
 
 
 def student(request):
-    image=studentadd.objects.filter(user=request.user)
-    print(image)
-    return render(request, 'student/dash.html',{'image':image})
+    # image=studentadd.objects.filter(user=request.user)
+    # print(image)
+    return render(request, 'student/dash.html')
 
 def sprofileview(request):
     u = request.user
