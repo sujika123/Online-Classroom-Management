@@ -11,7 +11,7 @@ from django.shortcuts import render, redirect
 from classroomapp.forms import LoginForm, userloginform, studentloginform, tchrleavesheduleform, notesddform, \
     taddAsgnmnttopicform, TchrComplaintForm, QuestionForm
 from classroomapp.models import courseadd, studentadd, notificationadd, tchrleaveshedule, stdleaveshedule, teacherlogin, \
-    addnotes, SaddAssignments, Attendance, StdntComplaint, TchrComplaint, Question
+    addnotes, SaddAssignments, Attendance, StdntComplaint, TchrComplaint, Question, Login
 from classroomapp.student_views import student
 
 
@@ -74,11 +74,20 @@ def tcrstudentupdate(request,id):
             return redirect('tviewstudents')
     return render(request,'teacher/updatestudent.html',{'form':form})
 
-def tcrstudentdelete(request,id):
-    user=studentadd.objects.get(id=id)
-    user.delete()
-    return redirect('tviewstudents')
+# def tcrstudentdelete(request,id):
+#     user=studentadd.objects.get(id=id)
+#     user.delete()
+#     return redirect('tviewstudents')
 
+def tcrstudentdelete(request,id):
+    sd=studentadd.objects.get(id=id)
+    s=Login.objects.get(student=sd)
+    if request.method=='POST':
+        s.delete()
+        messages.info(request, 'student deleted successfully')
+        return redirect('tviewstudents')
+    else:
+        return redirect('tviewstudents')
 
 def tviewnotification(request):
     u = request.user

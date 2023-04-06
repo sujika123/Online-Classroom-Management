@@ -22,7 +22,7 @@ SUBJECT_CHOICES={
 
 
 class teacherlogin(models.Model):
-    user=models.OneToOneField(Login,on_delete=models.CASCADE,related_name='teacher')
+    user=models.OneToOneField(Login,on_delete=models.CASCADE,related_name='teacher',null=True)
     name=models.CharField(max_length=50)
     age=models.IntegerField(null=True,blank=True)
     address=models.TextField(max_length=200)
@@ -43,7 +43,7 @@ class courseadd(models.Model):
      #   image = models.ImageField()
 
 class studentadd(models.Model):
-    user = models.ForeignKey(Login, on_delete=models.CASCADE)
+    user = models.ForeignKey(Login, on_delete=models.CASCADE,related_name='student',null=True)
     name = models.CharField(max_length=50)
     dob = models.DateField()
     age = models.IntegerField(null=True, blank=True)

@@ -1,5 +1,4 @@
-from django.contrib.auth import authenticate, login
-
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 from django.contrib import messages
@@ -50,7 +49,9 @@ def loginview(request):
 
     return render(request, 'login.html')
 
-
+def logout_view(request):
+    logout(request)
+    return redirect('loginview')
 
 def register(request):
     form = LoginForm()

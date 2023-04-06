@@ -84,7 +84,16 @@
                             <td>{{i.semester}}</td>
                             <td>{{i.dept}}</td>
                             <td><a href="{% url 'admstudentupdate' i.id %}" ><button class="btn btn-info" type="submit">Update</button></a></td>
-                            <td><a href="{% url 'admstudentdelete' i.id %}"><button class="btn btn-danger" type="submit">Delete</button></a></td>
+<!--                            <td><a href="{% url 'admstudentdelete' i.id %}"><button class="btn btn-danger" type="submit">Delete</button></a></td>-->
+
+                            <td>
+                            <form action="{% url 'admstudentdelete' i.id %}" method="post">
+                              {% csrf_token %}
+                              <input type="hidden" name="student" value="{{i.id}}" />
+                              <button type="submit" class="btn btn-danger">Delete</button>
+
+                            </form>
+                            </td>
 
                         </tr>
                       {% endfor %}

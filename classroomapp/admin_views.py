@@ -3,14 +3,16 @@ from django.contrib.auth import authenticate, login
 
 # Create your views here.
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from classroomapp.forms import LoginForm, userloginform, courseddform, studentloginform, notificationform
 from classroomapp.models import courseadd, studentadd, notificationadd, tchrleaveshedule, teacherlogin, \
-    TchrComplaint, StdntComplaint
+    TchrComplaint, StdntComplaint, Login
 
 
+@login_required(login_url='loginview')
 def adminhome(request):
     return render(request, 'Admin/dash.html')
 
@@ -37,10 +39,20 @@ def admteacherupdate(request,id):
             return redirect('teacherprf')
     return render(request,'Admin/teacherupdate.html',{'form':form})
 
-def admteacherdelete(request,id):
-    user=teacherlogin.objects.get(id=id)
-    user.delete()
-    return redirect('teacherprf')
+# def admteacherdelete(request,id):
+#     user=teacherlogin.objects.get(id=id)
+#     user.delete()
+#     return redirect('teacherprf')
+
+def admteacherdelete(request,user_id):
+    t=teacherlogin.objects.get(user_id=user_id)
+    s=Login.objects.get(teacher=t)
+    if request.method=='POST':
+        s.delete()
+        messages.info(request, 'teacher deleted successfully')
+        return redirect('teacherprf')
+    else:
+        return redirect('teacherprf')
 
 def addcourse(request):
     form = courseddform()
@@ -109,10 +121,22 @@ def admstudentupdate(request,id):
             return redirect('studentsprf')
     return render(request,'Admin/updatestudent.html',{'form':form})
 
+# def admstudentdelete(request,id):
+#     user=studentadd.objects.get(id=id)
+#     user.delete()
+#     return redirect('studentsprf')
+
 def admstudentdelete(request,id):
-    user=studentadd.objects.get(id=id)
-    user.delete()
-    return redirect('studentsprf')
+    data = studentadd.objects.get(id=id)
+    print(data)
+    s=Login.objects.get(student=data)
+    print(s)
+    if request.method=='POST':
+        s.delete()
+        messages.info(request, 'student deleted successfully')
+        return redirect('studentsprf')
+    else:
+        return redirect('studentsprf')
 
 def addnotification(request):
     form = notificationform()

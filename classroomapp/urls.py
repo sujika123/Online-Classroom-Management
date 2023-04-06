@@ -5,6 +5,7 @@ from classroomapp import views, admin_views, teacher_views, student_views
 urlpatterns = [
     path('',views.home,name='home'),
     path('loginview', views.loginview, name='loginview'),
+    path('logout_view', views.logout_view, name='logout_view'),
     path('register', views.register, name='register'),
 
 
@@ -16,7 +17,7 @@ urlpatterns = [
     path('teacherprf', admin_views.teacherprf, name='teacherprf'),
     # path('teacherprofile',views.teacherprofile,name='teacherprofile'),
     path('admteacherupdate/<int:id>/', admin_views.admteacherupdate, name='admteacherupdate'),
-    path('admteacherdelete/<int:id>/', admin_views.admteacherdelete, name='admteacherdelete'),
+    path('admteacherdelete/<int:user_id>/', admin_views.admteacherdelete, name='admteacherdelete'),
     path('addcourse', admin_views.addcourse, name='addcourse'),
     path('viewcourses',admin_views.viewcourses,name='viewcourses'),
     path('courseupdate/<int:id>/', admin_views.courseupdate, name='courseupdate'),
