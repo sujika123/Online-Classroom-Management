@@ -2,31 +2,20 @@
 <!--{% load crispy_forms_tags %}-->
 {% block content %}
 
-<div class="row">
-    {% for message in messages %}
-        <div class="alert alert-info" role="alert">
-            {{message}}
-        </div>
-        {% endfor %}
-     <div class="col-md-12">
-    <form method="post">{% csrf_token %}
-        <div class="col-md-12">
-            <div class="card" style="width:600px;color:black;">
-                <div class="card-header">
-                    <div class="media align-items-center">
-                        <div class="media-left">
-                            <h4 class="m-0 text-primary mr-2"><strong></strong></h4>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="card-title m-0">
-
-                            </h4>
-                        </div>
-                    </div>
+<div class="row column4 graph" style="height : 500px; width : 1000px;">
+    <div class="col-md-6 margin_bottom_30" >
+        <div class="dash_blog" >
+            <div class="dash_blog_inner">
+                <div class="dash_head">
+                    <H3>QUESTION</H3>
                 </div>
+                <br><br>
+                <div class="task_list_main">
+                    <ul class="task_list">
 
-                <div class="card-body">
-                <center><h1>Question</h1></center>
+                        <form method="post" style="color:black;margin-left:15px;">{% csrf_token %}
+        <div class="col-md-12">
+
                     {% for q in questions %}
 
                     {{forloop.counter}}.
@@ -45,20 +34,85 @@
 
                     {% endfor %}
 
+                </div>
 
+
+
+            </ul>
+
+                <div class="read_more">
+                    <div class="center"><button class="main_bt read_bt" type = "submit">Submit</button></div>
 
                 </div>
-                <div class="card-footer">
-
-                    <button class="btn btn-success float-right" type="submit">Submit <i
-                            class="material-icons btn__icon--right"></i></button>
-
-                </div>
+                     </form>
             </div>
         </div>
-    </form>
+    </div>
 
-     </div></div>
+
+
+
+
+
+
+<!--<div class="row">-->
+<!--    {% for message in messages %}-->
+<!--        <div class="alert alert-info" role="alert">-->
+<!--            {{message}}-->
+<!--        </div>-->
+<!--        {% endfor %}-->
+<!--     <div class="col-md-12">-->
+<!--    <form method="post">{% csrf_token %}-->
+<!--        <div class="col-md-12">-->
+<!--            <div class="card" style="width:600px;color:black;">-->
+<!--                <div class="card-header">-->
+<!--                    <div class="media align-items-center">-->
+<!--                        <div class="media-left">-->
+<!--                            <h4 class="m-0 text-primary mr-2"><strong></strong></h4>-->
+<!--                        </div>-->
+<!--                        <div class="media-body">-->
+<!--                            <h4 class="card-title m-0">-->
+
+<!--                            </h4>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card-body">-->
+<!--                <center><h1>Question</h1></center>-->
+<!--                    {% for q in questions %}-->
+
+<!--                    {{forloop.counter}}.-->
+
+
+<!--                    {{q.question}}<br>-->
+<!--                  (A)   <input type="radio" id="optiona" name="{{q.question}}" value="option1">-->
+<!--                    <label for="optiona">{{ q.option_1}}</label><br>-->
+<!--                  (B)  <input type="radio" id="optionb" name="{{q.question}}" value="option2">-->
+<!--                    <label for="optionb">{{ q.option_2}}</label><br>-->
+<!--                  (C)  <input type="radio" id="optionc" name="{{q.question}}" value="option3">-->
+<!--                    <label for="optionc">{{ q.option_3}}</label><br>-->
+<!--                  (D)  <input type="radio" id="optiond" name="{{q.question}}" value="option4">-->
+<!--                    <label for="optiond">{{ q.option_4}}</label><br>-->
+
+
+<!--                    {% endfor %}-->
+
+
+
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+
+<!--                    <button class="btn btn-success float-right" type="submit">Submit <i-->
+<!--                            class="material-icons btn__icon&#45;&#45;right"></i></button>-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
+
+<!--     </div></div>-->
+
 {% endblock  %}
 
 
