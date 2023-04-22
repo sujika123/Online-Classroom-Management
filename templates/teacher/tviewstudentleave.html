@@ -54,7 +54,7 @@
                             <form action="{% url 'delete_stdntleave' i.id %}" method="post">
                               {% csrf_token %}
                               <input type="hidden" name="teacher" value="{{i.id}}" />
-                              <button type="submit" class="btn btn-info">Delete</button>
+                              <button type="submit" class="btn btn-danger">Delete</button>
 
                             </form>
                           </td>

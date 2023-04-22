@@ -13,13 +13,13 @@
                 <div class="task_list_main">
                     <ul class="task_list">
 
-                        <form method="post" style="color:black;margin-left:15px;">{% csrf_token %}
-        <div class="col-md-12">
+                        <form method="post" style="color:black;margin-left:15px;">
+                            {% csrf_token %}
+                       <div class="col-md-12">
 
                     {% for q in questions %}
 
                     {{forloop.counter}}.
-
 
                     {{q.question}}<br>
                   (A)   <input type="radio" id="optiona" name="{{q.question}}" value="option1">
@@ -36,15 +36,13 @@
 
                 </div>
 
-
-
             </ul>
 
                 <div class="read_more">
                     <div class="center"><button class="main_bt read_bt" type = "submit">Submit</button></div>
 
                 </div>
-                     </form>
+                    </form>
             </div>
         </div>
     </div>
