@@ -54,7 +54,7 @@ def tstudentregister(request):
             c = form1.save(commit=False)
             c.user = user
             c.save()
-            return redirect(teacher)
+            return redirect(tviewstudents)
     return render(request, 'teacher/addstudent.html', {'form': form, 'form1': form1})
 
 

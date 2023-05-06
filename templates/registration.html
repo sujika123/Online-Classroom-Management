@@ -1,13 +1,78 @@
 <!DOCTYPE html>
-{% load crispy_forms_filters %}
 <html lang="en">
 {% load static %}
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
-</head>
-<body style="background-color: blue;">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png" />
+    <title>Edustage Education</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}" />
+    <!-- main css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+
+  <body>
+    <!--================ Start Header Menu Area =================-->
+    <header class="header_area">
+      <div class="main_menu">
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="icon-bar"></span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div
+              class="collapse navbar-collapse offset"
+              id="navbarSupportedContent"
+            >
+              <ul class="nav navbar-nav menu_nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'loginview' %}">Login</a>
+                </li>
+
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'register' %}">Registration</a>
+                </li>
+<!--                <li class="nav-item">-->
+<!--                  <a href="#" class="nav-link search" id="search">-->
+<!--                    <i class="ti-search"></i>-->
+<!--                  </a>-->
+<!--                </li>-->
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <br>
+
+{% load crispy_forms_filters %}
+
+<body>
 
 <form method="post" enctype="multipart/form-data" style="margin-left:500px;margin-top:60px;width:450px;background-color:white;color:black;">
 <div style="margin-left:67px;">
@@ -15,8 +80,8 @@
 
 <h2>Registration of Teachers</h2>
     {% csrf_token %}
-{{form|crispy}}
-{{form1|crispy}}
+    {{form|crispy}}
+    {{form1|crispy}}
 <br>
 
  <div class="col-12">
@@ -32,3 +97,48 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--{% load crispy_forms_filters %}-->
+<!--<html lang="en">-->
+<!--{% load static %}-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />-->
+<!--</head>-->
+<!--<body style="background-color: blue;">-->
+
+<!--<form method="post" enctype="multipart/form-data" style="margin-left:500px;margin-top:60px;width:450px;background-color:white;color:black;">-->
+<!--<div style="margin-left:67px;">-->
+<!-- <br>-->
+
+<!--<h2>Registration of Teachers</h2>-->
+<!--    {% csrf_token %}-->
+<!--{{form|crispy}}-->
+<!--{{form1|crispy}}-->
+<!--<br>-->
+
+<!-- <div class="col-12">-->
+<!--    <button class="btn btn-primary" type="submit" >Submit</button>-->
+<!--  </div>-->
+
+<!--&lt;!&ndash;<div class="d-grid gap-2 d-md-flex justify-content-md-end">&ndash;&gt;-->
+<!--&lt;!&ndash;<button class="btn btn-primary me-md-2" type="Submit">Submit</button>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<br><br>-->
+<!-- </div>-->
+<!--</form>-->
+
+<!--</body>-->
+<!--</html>-->

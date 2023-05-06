@@ -15,14 +15,12 @@ urlpatterns = [
 
     path('adminhome', admin_views.adminhome, name='adminhome'),
     path('teacherprf', admin_views.teacherprf, name='teacherprf'),
-    # path('teacherprofile',views.teacherprofile,name='teacherprofile'),
     path('admteacherupdate/<int:id>/', admin_views.admteacherupdate, name='admteacherupdate'),
     path('admteacherdelete/<int:user_id>/', admin_views.admteacherdelete, name='admteacherdelete'),
     path('addcourse', admin_views.addcourse, name='addcourse'),
     path('viewcourses',admin_views.viewcourses,name='viewcourses'),
     path('courseupdate/<int:id>/', admin_views.courseupdate, name='courseupdate'),
     path('coursedelete/<int:id>/', admin_views.coursedelete, name='coursedelete'),
-    # path('studentregister', admin_views.studentregister, name='studentregister'),
 
     path('studentsprf', admin_views.studentsprf, name='studentsprf'),
     path('admstudentupdate/<int:id>/', admin_views.admstudentupdate, name='admstudentupdate'),
