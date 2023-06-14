@@ -7,47 +7,46 @@
 <div class="row column3" style="height:600px; width: 1000px;">
 <!-- testimonial -->
  <div class="col-md-6">
-                           <div class="dark_bg full margin_bottom_30">
-                              <div class="full graph_head">
-                                 <div class="heading1 margin_0">
-                                    <h2>PROFILE</h2>
-                                 </div>
-                              </div>
-                              <div class="full graph_revenue">
-                                 <div class="row">
-                                    <div class="col-md-12">
-                                       <div class="content testimonial">
+     <div class="dark_bg full margin_bottom_30">
+         <div class="full graph_head">
+             <div class="heading1 margin_0">
+                 <h2>PROFILE</h2>
+             </div>
+         </div>
+         <div class="full graph_revenue">
+             <div class="row">
+                 <div class="col-md-12">
+                     <div class="content testimonial">
 
-                                           {% csrf_token %}
-       {% for i in data %}
-    <div style="margin-top:50px;margin-left:30px;color:white;">
+                         {% csrf_token %}
+                        {% for i in data %}
+                     <div style="margin-top:50px;margin-left:30px;color:white;">
 
-      <div><img src="{{i.photo.url}}" width="150px" height="150px"></div>
-        <br><br>
-      <div style="color: white;">
-        <p style="color: white;">Name : {{i.name}}</p>
-        <p style="color: white;">Student id : {{i.sid}}</p>
-        <p style="color: white;">Gender : {{i.gender}}</p>
-        <p style="color: white;">Dob : {{i.dob}}</p>
-        <p style="color: white;">Age : {{i.age}}</p>
-        <p style="color: white;">Address : {{i.address}}</p>
-        <p style="color: white;">Phone number : {{i.phone}}</p>
-        <p style="color: white;">Semester : {{i.semester}}</p>
-        <p style="color: white;">Department : {{i.dept}}</p>
-        <p></p>
-      </div>
+                    <div><img src="{{i.photo.url}}" width="150px" height="150px"></div>
+                     <br><br>
+                    <div style="color: white;">
+                      <p style="color: white;">Name : {{i.name}}</p>
+                      <p style="color: white;">Student id : {{i.sid}}</p>
+                      <p style="color: white;">Gender : {{i.gender}}</p>
+                      <p style="color: white;">Dob : {{i.dob}}</p>
+                      <p style="color: white;">Age : {{i.age}}</p>
+                      <p style="color: white;">Address : {{i.address}}</p>
+                      <p style="color: white;">Phone number : {{i.phone}}</p>
+                      <p style="color: white;">Semester : {{i.semester}}</p>
+                      <p style="color: white;">Department : {{i.dept}}</p>
+                     </div>
 
-  </div>
- {% endfor %}
+                   </div>
+                   {% endfor %}
 
 
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+</div>
                         <!-- end testimonial -->
 </div>
 
