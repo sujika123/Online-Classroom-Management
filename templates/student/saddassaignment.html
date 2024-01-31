@@ -4,33 +4,33 @@
 {% block content %}
 
 <div class="row column4 graph" style="height : 500px; width : 1000px;">
-                        <div class="col-md-6 margin_bottom_30" >
-                           <div class="dash_blog" >
-                              <div class="dash_blog_inner">
-                                 <div class="dash_head">
-                                     <H3>ASSIGNMENT</H3>
+    <div class="col-md-6 margin_bottom_30" >
+        <div class="dash_blog" >
+            <div class="dash_blog_inner">
+                <div class="dash_head">
+                    <H3>ASSIGNMENT</H3>
 <!--                                    <h3><span><i class="fa fa-calendar"></i> LEAVE </span><span class="plus_green_bt"><a href="#"></a></span></h3>-->
-                                 </div>
+                </div>
 <!--                                 <div class="list_cont">-->
 <!--&lt;!&ndash;                                    <p>Today Tasks for Ronney Jack</p>&ndash;&gt;-->
 <!--                                 </div>--><br><br>
-                                 <div class="task_list_main">
-                                    <ul class="task_list">
-                                      <form method="post" enctype="multipart/form-data" style="color:black;margin-left:80px;">
-                                        {% csrf_token %}
-                                        {{form|crispy}}
+                <div class="task_list_main">
+                    <ul class="task_list">
+                        <form method="post" enctype="multipart/form-data" style="color:black;margin-left:80px;">
+                            {% csrf_token %}
+                            {{form|crispy}}
 
-
-                                </ul>
-                                 </div>
-                                 <div class="read_more">
-                                    <div class="center"><button class="main_bt read_bt" type = "submit">Submit</button></div>
+                    </ul>
+                </div>
+                <div class="read_more">
+                    <div class="center"><button class="main_bt read_bt" type = "submit">Submit</button></div>
 <!--                                    <div class="center"><a class="main_bt read_bt" href="#">Read More</a></div>-->
-                                     </form>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

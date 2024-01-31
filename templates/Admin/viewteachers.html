@@ -4,68 +4,68 @@
 
 
 <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card" style="width: 1200px;color:black;">
-                <div class="card-body">
-                  <h4 class="card-title">TEACHERS</h4>
-                  <br>
+  <div class="card" style="width: 1200px;color:black;">
+    <div class="card-body">
+      <h4 class="card-title">TEACHERS</h4>
+      <br>
 <!--                  <p class="card-description">-->
 <!--                    Add class <code>.table-hover</code>-->
 <!--                  </p>-->
-                  <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th>SI NO</th>
-                          <th>Name</th>
-                          <th>Photo</th>
-                          <th>Teacher id</th>
-                          <th>Gender</th>
-                          <th>Age</th>
-                          <th>Address</th>
-                          <th>Phone number</th>
-                          <th>Subject</th>
-                          <th>Status</th>
-                          <th>Status</th>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>SI NO</th>
+            <th>Name</th>
+            <th>Photo</th>
+            <th>Teacher id</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Phone number</th>
+            <th>Subject</th>
+            <th>Status</th>
+            <th>Status</th>
 <!--                          <th>Status</th>-->
 
-                        </tr>
-                      </thead>
-                      <tbody>
-                      {% for i in data %}
-                        <tr>
-                          <td>{{ forloop.counter }}</td>
-                          <td>{{i.name}}</td>
-                          <td><img src="{{i.image.url}}" width="100px" height="100px"></td>
-                          <td>{{i.tid}}</td>
-                          <td>{{i.gender}}</td>
-                          <td>{{i.age}}</td>
-                          <td>{{i.address}}</td>
-                          <td>{{i.phone}}</td>
-                          <td>{{i.subject}}</td>
+          </tr>
+          </thead>
+          <tbody>
+          {% for i in data %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{i.name}}</td>
+            <td><img src="{{i.image.url}}" width="100px" height="100px"></td>
+            <td>{{i.tid}}</td>
+            <td>{{i.gender}}</td>
+            <td>{{i.age}}</td>
+            <td>{{i.address}}</td>
+            <td>{{i.phone}}</td>
+            <td>{{i.subject}}</td>
 <!--                          <td>{{i.status}}</td>-->
-                          <td>
-                            {% if i.status == 0 %}
-                            <a href="{% url 'approve_teacher' i.id %}" ><button type="submit" class="btn btn-info" >Approve</button></a>
-                            <form action="{% url 'reject_teacher' i.id %}" method="post">
-                              {% csrf_token %}
-                              <input type="hidden" name="teacher" value="{{i.id}}" />
-                              <br><button type="submit" class="btn btn-info">Reject</button>
-                            </form>
+            <td>
+              {% if i.status == 0 %}
+              <a href="{% url 'approve_teacher' i.id %}" ><button type="submit" class="btn btn-info" >Approve</button></a>
+              <form action="{% url 'reject_teacher' i.id %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="teacher" value="{{i.id}}" />
+                <br><button type="submit" class="btn btn-info">Reject</button>
+              </form>
 <!--                            <a href="{% url 'reject_teacher' i.id %}" ><button type="submit" class="btn btn-info" >Reject</button></a>-->
-                            {% elif i.status == 1 %}
-                            <p class="btn btn-success">Approved</p>
-                            {% else %}
-                            <p class="btn btn-danger">Rejected</p>
-                            {% endif %}
-                          </td>
-                          <td>
-                            <form action="{% url 'admteacherdelete' i.user_id %}" method="post">
-                              {% csrf_token %}
-                              <input type="hidden" name="teacher" value="{{i.user_id}}" />
-                              <button type="submit" class="btn btn-danger">Delete</button>
+              {% elif i.status == 1 %}
+              <p class="btn btn-success">Approved</p>
+              {% else %}
+              <p class="btn btn-danger">Rejected</p>
+              {% endif %}
+            </td>
+            <td>
+              <form action="{% url 'admteacherdelete' i.user_id %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="teacher" value="{{i.user_id}}" />
+                <button type="submit" class="btn btn-danger">Delete</button>
 
-                            </form>
-                          </td>
+              </form>
+            </td>
 
 
 
@@ -91,16 +91,15 @@
 <!--                          <td><a href="{% url 'admteacherupdate' i.id %}" ><button class="btn btn-info" type="submit">Update</button></a></td>-->
 <!--                          <td><a href="{% url 'admteacherdelete' i.id %}"><button class="btn btn-danger" type="submit">Delete</button></a></td>-->
 
-                        </tr>
-                       {% endfor %}
+          </tr>
+          {% endfor %}
 
-
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

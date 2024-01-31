@@ -4,57 +4,48 @@
 
 
 <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card" style="width:1000px;color:black;">
-                <div class="card-body">
-                  <h4 class="card-title">STUDENTS ATTENDANCE</h4>
+    <div class="card" style="width:1000px;color:black;">
+        <div class="card-body">
+            <h4 class="card-title">STUDENTS ATTENDANCE</h4>
 
-                    <h4>Name : {{request.user}}</h4>
+            <h4>Name : {{request.user}}</h4>
 
-
-                    <br><br>
+            <br><br>
 <!--                  <p class="card-description">-->
 <!--                    Add class <code>.table-hover</code>-->
 <!--                  </p>-->
-                  <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-
-                          <th>SI.NO</th>
-                          <th>Date</th>
-
-                          <th>Attendance</th>
-                          <th>Time</th>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>SI.NO</th>
+                        <th>Date</th>
+                        <th>Attendance</th>
+                        <th>Time</th>
 <!--                          <th><b>Status</b></th>-->
-
-                        </tr>
-                      </thead>
-                      <tbody>
-                      {% for i in data %}
-                        <tr>
-                            <td>{{ forloop.counter }}</td>
-
-                            <td>{{i.date}}</td>
-                            <td>{{i.attendance}}</td>
-                            <td>{{i.time}}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{i.date}}</td>
+                        <td>{{i.attendance}}</td>
+                        <td>{{i.time}}</td>
 
 <!--                            <td>-->
 <!--                                {{i.attendance}}-->
 <!--                            <a href="{% url 'view_day_attendence' i %}"> view attendance</a>-->
 <!--                            </td>-->
 
-
-
-                        </tr>
-                      {% endfor %}
-
-
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}

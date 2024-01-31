@@ -4,64 +4,56 @@
 
 
 <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card" style="width: 1100px;color:black;">
-                <div class="card-body">
-                  <h4 class="card-title">ASSIGNMENTS</h4>
-                  <br><br>
+    <div class="card" style="width: 1100px;color:black;">
+        <div class="card-body">
+            <h4 class="card-title">ASSIGNMENTS</h4>
+            <br><br>
 <!--                  <p class="card-description">-->
 <!--                    Add class <code>.table-hover</code>-->
 <!--                  </p>-->
-                  <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th>SI.NO:  </th>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>SI.NO:  </th>
 <!--                          <th>Student id:  </th>-->
-                          <th>Name:  </th>
-
-
-                          <th>Subject : </th>
-                          <th>Title : </th>
-                          <th>Date : </th>
-
-                          <th>File</th> &nbsp;&nbsp;
-
-
-                          <th>Status</th>
-
-                        </tr>
-                      </thead>
-                      <tbody>
-                      {% for i in data %}
-                        <tr>
-                          <td>{{ forloop.counter }}</td>
-
+                        <th>Name:  </th>
+                        <th>Subject : </th>
+                        <th>Title : </th>
+                        <th>Date : </th>
+                        <th>File</th> &nbsp;&nbsp;
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
 
 <!--                          <td>{{i.user.sid}}</td>-->
-                          <td>{{i.user}}</td>
-                          <td>{{i.subject}}</td>
-                          <td>{{i.title}}</td>
-                          <td>{{i.date}}</td>
-                          <td><a href="{{i.file.url}}" download>{{i.file}}</a></td>
-                          <td>
+                        <td>{{i.user}}</td>
+                        <td>{{i.subject}}</td>
+                        <td>{{i.title}}</td>
+                        <td>{{i.date}}</td>
+                        <td><a href="{{i.file.url}}" download>{{i.file}}</a></td>
+                        <td>
 
 <!--                             <button type="submit" class="btn btn-info" >Check</button>-->
-                          {% if i.status == 0 %}
+                            {% if i.status == 0 %}
                             <a href="{% url 'approve_assignment' i.id %}" ><button type="submit" class="btn btn-info" >Check</button></a>
                           {% elif i.status == 1 %}
                             <p class="btn btn-success">Checked</p>  &nbsp;
                            {% endif %}
-                             </td>
-                        </tr>
-                       {% endfor %}
+                        </td>
+                    </tr>
+                    {% endfor %}
 
-
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+                    </tbody>
+                </table>
             </div>
+        </div>
+    </div>
+</div>
 
 
 

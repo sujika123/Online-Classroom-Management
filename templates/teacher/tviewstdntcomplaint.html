@@ -8,12 +8,12 @@
     </div>
     {% endfor %}
     <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card" style="width: 1000px;color:black;">
-                <div class="card-body">
-                  <h4 class="card-title">COMPLAINT</h4>
+        <div class="card" style="width: 1000px;color:black;">
+            <div class="card-body">
+                <h4 class="card-title">COMPLAINT</h4>
                   <br><br>
 
-                 <div class="table-responsive">
+                <div class="table-responsive">
                     <table class="table table-hover">
                       <thead>
                         <tr>
@@ -24,8 +24,6 @@
                           <th scope="col">Complaint</th>
                           <th scope="col">Date</th>
                           <th scope="col">Reply</th>
-
-
                         </tr>
                       </thead>
                       <tbody>
@@ -33,7 +31,6 @@
                         <tr>
                           <td>{{ forloop.counter }}</td>
                           <td>{{i.user}}</td>
-
                           <td>{{i.subject}}</td>
                           <td>{{i.complaint}}</td>
                           <td>{{i.date}}</td>
@@ -44,17 +41,15 @@
                               {{i.reply}}
                               {% endif %}
                           </td>
-
                         </tr>
                        {% endfor %}
 
-
                       </tbody>
                     </table>
-                  </div>
                 </div>
-              </div>
             </div>
+        </div>
+    </div>
 </div>
 
 

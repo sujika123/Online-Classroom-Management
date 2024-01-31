@@ -5,16 +5,16 @@
 
 
 <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card" style="width:1200px;color:black;">
-                <div class="card-body">
-                  <h4 class="card-title">STUDENTS</h4>
-                  <p class="card-description">
-                     <code></code>
-                  </p>
-                  <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
+    <div class="card" style="width:1200px;color:black;">
+        <div class="card-body">
+            <h4 class="card-title">STUDENTS</h4>
+            <p class="card-description">
+                <code></code>
+            </p>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
 
                           <th>SI.NO</th>
                           <th>Name</th>
@@ -30,11 +30,11 @@
                           <th>status</th>
                           <th>status</th>
 
-                        </tr>
-                      </thead>
-                      <tbody>
-                      {% for i in data %}
-                        <tr>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                    <tr>
                             <td>{{ forloop.counter }}</td>
                             <td>{{i.name}}</td>
                             <td><img src="{{i.photo.url}}" width="100px" height="100px"></td>
@@ -58,16 +58,16 @@
                             </form>
                             </td>
 
-                        </tr>
-                      {% endfor %}
+                    </tr>
+                    {% endfor %}
 
 
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+                    </tbody>
+                </table>
             </div>
+        </div>
+    </div>
+</div>
 
 <br>
 

@@ -4,53 +4,51 @@
 
 
 <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card" style="width: 1140px;color:black;">
-                <div class="card-body">
-                  <h4 class="card-title">EXAM QUESTIONS</h4>
+  <div class="card" style="width: 1140px;color:black;">
+    <div class="card-body">
+      <h4 class="card-title">EXAM QUESTIONS</h4>
                   <br><br>
 <!--                  <p class="card-description">-->
 <!--                    Add class <code>.table-hover</code>-->
 <!--                  </p>-->
-                  <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th>SI.NO:  </th>
-                          <th>Question : </th>
-                          <th>Option 1 : </th>
-                          <th>Option 2 : </th>
-                          <th>Option 3 : </th>
-                          <th>Option 4 : </th>
-                          <th>Answer : </th>
-                          <th>Edit</th>&nbsp;&nbsp;
-                          <th>Edit</th>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>SI.NO:  </th>
+            <th>Question : </th>
+            <th>Option 1 : </th>
+            <th>Option 2 : </th>
+            <th>Option 3 : </th>
+            <th>Option 4 : </th>
+            <th>Answer : </th>
+            <th>Edit</th>&nbsp;&nbsp;
+            <th>Edit</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for i in data %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{i.question}}</td>
+            <td>{{i.option_1}}</td>
+            <td>{{i.option_2}}</td>
+            <td>{{i.option_3}}</td>
+            <td>{{i.option_4}}</td>
+            <td>{{i.Ans}}</td>
 
-                        </tr>
-                      </thead>
-                      <tbody>
-                      {% for i in data %}
-                        <tr>
-                          <td>{{ forloop.counter }}</td>
-                          <td>{{i.question}}</td>
-                          <td>{{i.option_1}}</td>
-                          <td>{{i.option_2}}</td>
-                          <td>{{i.option_3}}</td>
-                          <td>{{i.option_4}}</td>
-                          <td>{{i.Ans}}</td>
+            <td><a href="{% url 'tupdate_question' i.id %}" ><button class="btn btn-info" type="submit">Update</button></a></td>
+            <td><a href="{% url 'tdelete_question' i.id %}"><button class="btn btn-danger" type="submit">Delete</button></a></td>
 
-                          <td><a href="{% url 'tupdate_question' i.id %}" ><button class="btn btn-info" type="submit">Update</button></a></td>
-                          <td><a href="{% url 'tdelete_question' i.id %}"><button class="btn btn-danger" type="submit">Delete</button></a></td>
+          </tr>
+          {% endfor %}
 
-                        </tr>
-                       {% endfor %}
-
-
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
