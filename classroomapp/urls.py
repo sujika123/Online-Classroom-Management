@@ -81,7 +81,6 @@ urlpatterns = [
     path('question_view_techr', teacher_views.question_view_techr, name='question_view_techr'),
     path('tdelete_question/<int:id>/', teacher_views.tdelete_question, name='tdelete_question'),
     path('tupdate_question/<int:id>/', teacher_views.tupdate_question, name='tupdate_question'),
-    path('tview_StdntMark', teacher_views.tview_StdntMark, name='tview_StdntMark'),
 
 
 

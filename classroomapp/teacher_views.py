@@ -344,10 +344,6 @@ def tupdate_question(request,id):
             return redirect('question_view_techr')
     return render(request,'teacher/updateQuestion.html',{'form':form})
 
-def tview_StdntMark(request):
-    u = request.user
-    data = Question.objects.all()
-    return render(request, 'teacher/tview_StdntMark.html', {'data': data})
 
 
 
