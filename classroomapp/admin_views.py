@@ -17,17 +17,14 @@ def adminhome(request):
     return render(request, 'Admin/dash.html')
 
 
-
+@login_required(login_url='loginview')
 def teacherprf(request):
     data=teacherlogin.objects.all()
     print(data)
     return render(request,'Admin/viewteachers.html',{'data':data})
-# def teacherprofile(request):
-#     u=request.user
-#     data=user.objects.filter(user=u)
-#     # return render(request,'Admin/user.html')
-#     return render(request,'Admin/viewteachers.html')
 
+
+@login_required(login_url='loginview')
 def admteacherupdate(request,id):
     user=teacherlogin.objects.get(id=id)
     form=userloginform(instance=user)
@@ -44,6 +41,7 @@ def admteacherupdate(request,id):
 #     user.delete()
 #     return redirect('teacherprf')
 
+@login_required(login_url='loginview')
 def admteacherdelete(request,user_id):
     t=teacherlogin.objects.get(user_id=user_id)
     s=Login.objects.get(teacher=t)
@@ -54,6 +52,10 @@ def admteacherdelete(request,user_id):
     else:
         return redirect('teacherprf')
 
+
+# Course
+
+@login_required(login_url='loginview')
 def addcourse(request):
     form = courseddform()
     u = request.user
@@ -66,11 +68,13 @@ def addcourse(request):
         return redirect('viewcourses')
     return render(request,'Admin/addcourses.html',{'form':form})
 
+@login_required(login_url='loginview')
 def viewcourses(request):
     u = request.user
     data = courseadd.objects.filter(user=u)
     return render(request,'Admin/viewcourses.html',{'data':data})
 
+@login_required(login_url='loginview')
 def courseupdate(request,id):
     user = courseadd.objects.get(id=id)
     form = courseddform(instance=user)
@@ -83,33 +87,22 @@ def courseupdate(request,id):
     return render(request, 'Admin/updatecourses.html', {'form': form})
 
 
+@login_required(login_url='loginview')
 def coursedelete(request,id):
     data=courseadd.objects.get(id=id)
     data.delete()
     return redirect('viewcourses')
 
-# def studentregister(request):
-#     form = LoginForm()
-#     form1 = studentloginform()
-#     if request.method == 'POST':
-#         form = LoginForm(request.POST)
-#         form1 = studentloginform(request.POST, request.FILES)
-#         if form.is_valid() and form1.is_valid():
-#             user = form.save(commit=False)
-#             # user.is_user = True
-#             user.is_student = True
-#             user.save()
-#             c = form1.save(commit=False)
-#             c.user = user
-#             c.save()
-#             return redirect(adminhome)
-#     return render(request, 'Admin/addstudent.html', {'form': form, 'form1': form1})
 
+# Student
+
+@login_required(login_url='loginview')
 def studentsprf(request):
     data=studentadd.objects.all()
     print(data)
     return render(request,'Admin/viewstudent.html',{'data':data})
 
+@login_required(login_url='loginview')
 def admstudentupdate(request,id):
     user=studentadd.objects.get(id=id)
     form=studentloginform(instance=user)
@@ -126,6 +119,7 @@ def admstudentupdate(request,id):
 #     user.delete()
 #     return redirect('studentsprf')
 
+@login_required(login_url='loginview')
 def admstudentdelete(request,id):
     data = studentadd.objects.get(id=id)
     print(data)
@@ -138,6 +132,10 @@ def admstudentdelete(request,id):
     else:
         return redirect('studentsprf')
 
+
+# Notification
+
+@login_required(login_url='loginview')
 def addnotification(request):
     form = notificationform()
     u = request.user
@@ -150,11 +148,13 @@ def addnotification(request):
         return redirect('viewnotification')
     return render(request,'Admin/addnotification.html',{'form':form})
 
+@login_required(login_url='loginview')
 def viewnotification(request):
     u = request.user
     data = notificationadd.objects.filter(user=u)
     return render(request,'Admin/viewnotification.html',{'data':data})
 
+@login_required(login_url='loginview')
 def notificationupdate(request,id):
     user = notificationadd.objects.get(id=id)
     form = notificationform(instance=user)
@@ -166,17 +166,23 @@ def notificationupdate(request,id):
             return redirect('viewnotification')
     return render(request, 'Admin/updatenotification.html', {'form': form})
 
+@login_required(login_url='loginview')
 def notificationdelete(request,id):
     data=notificationadd.objects.get(id=id)
     data.delete()
     return redirect('viewnotification')
 
+
+# Leave
+
+@login_required(login_url='loginview')
 def aviewteacherleave(request):
     u = request.user
     data = tchrleaveshedule.objects.all()
 
     return render(request,'Admin/viewteacherleave.html',{'data':data})
 
+@login_required(login_url='loginview')
 def approve_tchrleave(request,id):
     teacher = tchrleaveshedule.objects.get(id=id)
     teacher.status = True
@@ -186,6 +192,7 @@ def approve_tchrleave(request,id):
     return redirect('aviewteacherleave')
 
 # Reject Teacher's leave
+@login_required(login_url='loginview')
 def reject_tchrleave(request, id):
     teacher = tchrleaveshedule.objects.get(id=id)
     if request.method == 'POST':
@@ -194,12 +201,15 @@ def reject_tchrleave(request, id):
         messages.info(request,'rejected student leave')
     return redirect('aviewteacherleave')
 
+@login_required(login_url='loginview')
 def delete_tchrleave(request,id):
     tleave = tchrleaveshedule.objects.get(id=id)
     tleave.delete()
     return redirect('aviewteacherleave')
 
+
 # Approve Teacher
+@login_required(login_url='loginview')
 def approve_teacher(request,id):
     teacher = teacherlogin.objects.get(id=id)
     teacher.status = True
@@ -209,6 +219,7 @@ def approve_teacher(request,id):
     return redirect('teacherprf')
 
 # Reject Teacher
+@login_required(login_url='loginview')
 def reject_teacher(request, id):
     teacher = teacherlogin.objects.get(id=id)
     if request.method == 'POST':
@@ -219,6 +230,7 @@ def reject_teacher(request, id):
 
 
 # View Complaints
+@login_required(login_url='loginview')
 def complaint_view(request):
 
     n = TchrComplaint.objects.all()
@@ -227,6 +239,7 @@ def complaint_view(request):
     return render(request, 'admin/viewcomplaints.html', {'complaint': n})
 
 # Reply Complaints
+@login_required(login_url='loginview')
 def reply_complaint(request, id):
     complaint = TchrComplaint.objects.get(id=id)
     # complaint2 = StdntComplaint.objects.get(id=id)
@@ -239,6 +252,7 @@ def reply_complaint(request, id):
     return render(request, 'admin/replycomplaints.html', {'complaint': complaint})
 
 
+@login_required(login_url='loginview')
 def stdntcomplaint_view(request):
 
     # n = TchrComplaint.objects.all()
@@ -247,6 +261,7 @@ def stdntcomplaint_view(request):
     return render(request, 'admin/viewstdntcomplaint.html', {'complaint': n})
 
 # Reply Complaints
+@login_required(login_url='loginview')
 def reply_studntcomplaint(request, id):
     complaint = StdntComplaint.objects.get(id=id)
     # complaint2 = StdntComplaint.objects.get(id=id)

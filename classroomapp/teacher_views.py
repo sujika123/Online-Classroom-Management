@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 
 # Create your views here.
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -15,9 +16,11 @@ from classroomapp.models import courseadd, studentadd, notificationadd, tchrleav
 from classroomapp.student_views import student
 
 
+@login_required(login_url='loginview')
 def teacher(request):
     return render(request, 'teacher/dash.html')
 
+@login_required(login_url='loginview')
 def teacherprofileview(request):
     u = request.user
     data = teacherlogin.objects.filter(user=u)
@@ -25,6 +28,7 @@ def teacherprofileview(request):
 
     return render(request,'teacher/profileview.html',{'data':data})
 
+@login_required(login_url='loginview')
 def tprofileupdate(request,id):
     profile = teacherlogin.objects.get(id=id)
     form1 = userloginform(instance=profile)
@@ -40,6 +44,10 @@ def tprofileupdate(request,id):
 
     return render(request,'teacher/profileupdate.html',{'form1':form1})
 
+
+# Student
+
+@login_required(login_url='loginview')
 def tstudentregister(request):
     form = LoginForm()
     form1 = studentloginform()
@@ -57,12 +65,13 @@ def tstudentregister(request):
             return redirect(tviewstudents)
     return render(request, 'teacher/addstudent.html', {'form': form, 'form1': form1})
 
-
+@login_required(login_url='loginview')
 def tviewstudents(request):
     data=studentadd.objects.all()
     print(data)
     return render(request,'teacher/tviewstudent.html',{'data':data})
 
+@login_required(login_url='loginview')
 def tcrstudentupdate(request,id):
     user=studentadd.objects.get(id=id)
     form=studentloginform(instance=user)
@@ -79,6 +88,7 @@ def tcrstudentupdate(request,id):
 #     user.delete()
 #     return redirect('tviewstudents')
 
+@login_required(login_url='loginview')
 def tcrstudentdelete(request,id):
     sd=studentadd.objects.get(id=id)
     s=Login.objects.get(student=sd)
@@ -89,11 +99,15 @@ def tcrstudentdelete(request,id):
     else:
         return redirect('tviewstudents')
 
+
+@login_required(login_url='loginview')
 def tviewnotification(request):
     u = request.user
     data = notificationadd.objects.all()
     return render(request,'teacher/tviewnotification.html',{'data':data})
 
+
+@login_required(login_url='loginview')
 def tviewcourses(request):
     u = request.user
     data = courseadd.objects.all()
@@ -111,6 +125,10 @@ def tviewcourses(request):
 #         return redirect('teacher')
 #     return render(request,'teacher/tleaveschedule.html', {'form': form})
 
+
+# Leave
+
+@login_required(login_url='loginview')
 def tchrleave(request):
     form = tchrleavesheduleform()
     if request.method == 'POST':
@@ -128,13 +146,14 @@ def tchrleave(request):
         form = tchrleavesheduleform()
     return render(request, 'teacher/tleaveschedule.html', {'form': form})
 
-
+@login_required(login_url='loginview')
 def tchrleavestatus(request):
     u = request.user
     data = tchrleaveshedule.objects.filter(name=u)
     print(data)
     return render(request,'teacher/tleavestatus.html', {'data': data})
 
+@login_required(login_url='loginview')
 def tviewstudentleave(request):
     u = request.user
     data = stdleaveshedule.objects.all()
@@ -142,6 +161,7 @@ def tviewstudentleave(request):
     return render(request,'teacher/tviewstudentleave.html',{'data':data})
 
 # Approve student's leave
+@login_required(login_url='loginview')
 def approve_stdntleave(request,id):
     student = stdleaveshedule.objects.get(id=id)
     student.status = True
@@ -151,6 +171,7 @@ def approve_stdntleave(request,id):
     return redirect('tviewstudentleave')
 
 # Reject student's leave
+@login_required(login_url='loginview')
 def reject_stdntleave(request, id):
     student = stdleaveshedule.objects.get(id=id)
     if request.method == 'POST':
@@ -159,6 +180,7 @@ def reject_stdntleave(request, id):
         messages.info(request,'rejected student leave')
     return redirect('tviewstudentleave')
 
+@login_required(login_url='loginview')
 def delete_stdntleave(request,id):
     sleave = stdleaveshedule.objects.get(id=id)
     sleave.delete()
@@ -166,10 +188,13 @@ def delete_stdntleave(request,id):
 
 
 # Complaint
+
+@login_required(login_url='loginview')
 def complaint_stdnt(request):
     n = StdntComplaint.objects.all()
     return render(request, 'teacher/tviewstdntcomplaint.html', {'complaint': n})
 
+@login_required(login_url='loginview')
 def reply_stdntcomplaint(request, id):
     complaint = StdntComplaint.objects.get(id=id)
     if request.method == 'POST':
@@ -181,6 +206,7 @@ def reply_stdntcomplaint(request, id):
     return render(request, 'teacher/replystdntcomplaint.html', {'complaint': complaint})
 
 
+@login_required(login_url='loginview')
 def complaint_add_teacher(request):
     form = TchrComplaintForm()
     u = request.user
@@ -197,12 +223,15 @@ def complaint_add_teacher(request):
     return render(request, 'teacher/registercomplaint.html', {'form': form})
 
 
-
+@login_required(login_url='loginview')
 def complaint_tchrview(request):
     n = TchrComplaint.objects.filter(user=request.user)
     return render(request, 'teacher/viewselfcomplaint.html', {'complaint': n})
 
+
 # Notes
+
+@login_required(login_url='loginview')
 def taddnotes(request):
     form = notesddform()
     u = request.user
@@ -215,17 +244,22 @@ def taddnotes(request):
         return redirect('tviewnotes')
     return render(request,'teacher/addnotes.html',{'form':form})
 
+@login_required(login_url='loginview')
 def tviewnotes(request):
     u = request.user
     data = addnotes.objects.filter(user=u)
     return render(request,'teacher/tviewnotes.html',{'data':data})
 
+@login_required(login_url='loginview')
 def tdelete_notes(request,id):
     tnotes = addnotes.objects.get(id=id)
     tnotes.delete()
     return redirect('tviewnotes')
 
+
 # Assignment
+
+@login_required(login_url='loginview')
 def taddasnmnttopic(request):
     form = taddAsgnmnttopicform()
     u = request.user
@@ -239,12 +273,14 @@ def taddasnmnttopic(request):
     return render(request,'teacher/addassignmenttopic.html',{'form':form})
 
 
+@login_required(login_url='loginview')
 def tviewassignment(request):
     u = request.user
     data = SaddAssignments.objects.all()
     return render(request,'teacher/tviewassaignment.html',{'data':data})
 
 
+@login_required(login_url='loginview')
 def approve_assignment(request,id):
     student = SaddAssignments.objects.get(id=id)
     student.status = True
@@ -256,11 +292,14 @@ def approve_assignment(request,id):
 
 # Attendance
 
+@login_required(login_url='loginview')
 def add_attendance(request):
     name = studentadd.objects.all()
     return render(request,'teacher/addattendance.html',{'name':name})
 
 now = datetime.datetime.now()
+
+@login_required(login_url='loginview')
 def mark_attendance(request,id):
     user = studentadd.objects.get(id=id)
     att=Attendance.objects.filter(student=user,date=datetime.date.today())
@@ -275,6 +314,7 @@ def mark_attendance(request,id):
             return redirect('add_attendance')
     return render(request,"teacher/mark_attendance.html")
 
+@login_required(login_url='loginview')
 def view_attendance(request):
     value_list = Attendance.objects.values_list('date',flat=True).distinct()
     attend = {}
@@ -283,6 +323,7 @@ def view_attendance(request):
     return render(request,'teacher/view_attendance.html',{'attend':attend})
 
 
+@login_required(login_url='loginview')
 def view_day_attendence(request,date):
     attend=Attendance.objects.filter(date=date)
 
@@ -309,6 +350,7 @@ def view_day_attendence(request,date):
 
 #Teacher add Questions
 
+@login_required(login_url='loginview')
 def add_questions(request):
     form = QuestionForm()
     u = request.user
@@ -323,16 +365,19 @@ def add_questions(request):
 
 # Teacher View Questions
 
+@login_required(login_url='loginview')
 def question_view_techr(request):
     u = request.user
     data = Question.objects.all()
     return render(request, 'teacher/tviewQuestion.html', {'data': data})
 
+@login_required(login_url='loginview')
 def tdelete_question(request,id):
     qustn = Question.objects.get(id=id)
     qustn.delete()
     return redirect('question_view_techr')
 
+@login_required(login_url='loginview')
 def tupdate_question(request,id):
     user=Question.objects.get(id=id)
     form=QuestionForm(instance=user)

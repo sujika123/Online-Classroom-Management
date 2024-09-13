@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login
 
 # Create your views here.
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -12,33 +13,39 @@ from classroomapp.models import courseadd, studentadd, notificationadd, stdleave
     addnotes, taddAsgnmnttopic, StdntComplaint, Attendance, SaddAssignments, Question
 
 
+@login_required(login_url='loginview')
 def student(request):
     # image=studentadd.objects.filter(user=request.user)
     # print(image)
     return render(request, 'student/dash.html')
 
+@login_required(login_url='loginview')
 def sprofileview(request):
     u = request.user
     data = studentadd.objects.filter(user=u)
     print(data)
     return render(request, 'student/profileview.html', {'data': data})
 
+@login_required(login_url='loginview')
 def sviewteachers(request):
     # data=teacherlogin.objects.all()
     data = teacherlogin.objects.filter(status=True)
     print(data)
     return render(request,'student/sviewteachers.html',{'data':data})
 
+@login_required(login_url='loginview')
 def sviewnotification(request):
     u = request.user
     data = notificationadd.objects.all()
     return render(request,'student/sviewnotification.html',{'data':data})
 
+@login_required(login_url='loginview')
 def sviewcourses(request):
     u = request.user
     data = courseadd.objects.all()
     return render(request,'student/viewcourses.html',{'data':data})
 
+@login_required(login_url='loginview')
 def sleaveshedule(request):
     form = stdleavesheduleform()
     if request.method == 'POST':
@@ -71,7 +78,7 @@ def sleaveshedule(request):
 #
 #
 
-
+@login_required(login_url='loginview')
 def sleavestatus(request):
     u = request.user
     data = stdleaveshedule.objects.filter(name=u)
@@ -79,8 +86,10 @@ def sleavestatus(request):
 
     return render(request, 'student/leavestatus.html', {'data': data})
 
+
 # Complaint
 
+@login_required(login_url='loginview')
 def complaint_add_student(request):
     form = StdntComplaintForm()
     u = request.user
@@ -97,7 +106,7 @@ def complaint_add_student(request):
     return render(request, 'student/complaintadd.html', {'form': form})
 
 
-
+@login_required(login_url='loginview')
 def complaint_studentview(request):
     n = StdntComplaint.objects.filter(user=request.user)
     return render(request, 'student/viewcomplaint.html', {'complaint': n})
@@ -106,6 +115,7 @@ def complaint_studentview(request):
 
 
 # Notes
+@login_required(login_url='loginview')
 def sviewnotes(request):
     u = request.user
     data = addnotes.objects.all()
@@ -113,6 +123,7 @@ def sviewnotes(request):
 
 
 # Assignment
+@login_required(login_url='loginview')
 def sviewasgnmnttopic(request):
     u = request.user
     data = taddAsgnmnttopic.objects.all()
@@ -120,7 +131,7 @@ def sviewasgnmnttopic(request):
 
 
 
-
+@login_required(login_url='loginview')
 def SaddAssignment(request):
     form = sAssignmentddform()
     u = request.user
@@ -133,6 +144,7 @@ def SaddAssignment(request):
         return redirect('student')
     return render(request,'student/saddassaignment.html',{'form':form})
 
+@login_required(login_url='loginview')
 def sassignmentstatus(request):
     u = request.user
     data = SaddAssignments.objects.filter(user=u)
@@ -144,40 +156,18 @@ def sassignmentstatus(request):
 
 # Attendance
 
+@login_required(login_url='loginview')
 def studentview_attendance(request):
     u = studentadd.objects.get(user=request.user)
     attendance = Attendance.objects.filter(student=u)
     return render(request, 'student/sviewattendance.html', {'data': attendance})
 
-    # u = request.user
-    # data = Attendance.objects.filter(user=u)
-    # print(data)
-    # return render(request, 'student/sviewattendance.html', {'data': data})
-    #
-
-
-# def studentview_attendance(request):
-#     value_list = Attendance.objects.values_list('date',flat=True).distinct()
-#     attend = {}
-#     for value in value_list:
-#         attend[value] = Attendance.objects.filter(date=value)
-#     return render(request,'student/sviewattendance.html',{'attend':attend})
-#
-#
-# def studentview_day_attendence(request,date):
-#     attend=Attendance.objects.filter(date=date)
-#
-#     context={
-#         'attend': attend,
-#         'date': date
-#     }
-#     return render(request,'student/dayattendence.html',context)
 
 
 # EXAM
 ## Student View Questions
 
-
+@login_required(login_url='loginview')
 def take_test(request):
     if request.method == 'POST':
         print(request.POST)
