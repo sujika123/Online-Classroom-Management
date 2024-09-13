@@ -2,7 +2,12 @@
 {% load crispy_forms_filters %}
 {% block content %}
 
-<div></div>
+
+{% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{message}}
+    </div>
+{% endfor %}
 <div class="col-lg-6 grid-margin stretch-card">
     <div class="card" style="width:1000px;color:black;">
         <div class="card-body">
