@@ -3,8 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 import datetime
 
 from classroomapp.models import Login, courseadd, teacherlogin, studentadd, notificationadd, stdleaveshedule, \
-    tchrleaveshedule, addnotes, taddAsgnmnttopic, SaddAssignments, Attendance, StdntComplaint, TchrComplaint, Question, \
-    Mark
+    tchrleaveshedule, addnotes, taddAsgnmnttopic, SaddAssignments, Attendance, StdntComplaint, TchrComplaint, Question
 
 
 class DateInput(forms.DateInput):
@@ -126,9 +125,6 @@ class QuestionForm(forms.ModelForm):
         fields = ('question', 'Ans', 'option_1','option_2','option_3','option_4')
 
 
-class MarkForm(forms.ModelForm):
-    class Meta:
-        model = Mark
-        fields = ('student','name','mark')
+
 
 

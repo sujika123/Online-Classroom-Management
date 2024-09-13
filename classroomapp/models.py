@@ -169,12 +169,6 @@ class Question(models.Model):
       return self.question
 
 
-class Mark(models.Model):
-    student=models.ForeignKey(Login,on_delete=models.CASCADE)
-    name=models.CharField(max_length=50)
-    mark=models.IntegerField()
 
-    def __str__(self):
-        return self.student
 
 
