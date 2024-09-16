@@ -59,12 +59,14 @@
               {% endif %}
             </td>
             <td>
-              <form action="{% url 'admteacherdelete' i.user_id %}" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="teacher" value="{{i.user_id}}" />
-                <button type="submit" class="btn btn-danger">Delete</button>
+              <td><a href="{% url 'admteacherdelete' i.id %}"> <button type="button" class="btn btn-danger">DELETE</button></a></td>
 
-              </form>
+<!--              <form action="{% url 'admteacherdelete' i.user_id %}" method="post">-->
+<!--                {% csrf_token %}-->
+<!--                <input type="hidden" name="teacher" value="{{i.user_id}}" />-->
+<!--                <button type="submit" class="btn btn-danger">Delete</button>-->
+
+<!--              </form>-->
             </td>
 
 

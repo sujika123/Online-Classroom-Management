@@ -36,21 +36,22 @@ def admteacherupdate(request,id):
             return redirect('teacherprf')
     return render(request,'Admin/teacherupdate.html',{'form':form})
 
-# def admteacherdelete(request,id):
-#     user=teacherlogin.objects.get(id=id)
-#     user.delete()
-#     return redirect('teacherprf')
-
 @login_required(login_url='loginview')
-def admteacherdelete(request,user_id):
-    t=teacherlogin.objects.get(user_id=user_id)
-    s=Login.objects.get(teacher=t)
-    if request.method=='POST':
-        s.delete()
-        messages.info(request, 'teacher deleted successfully')
-        return redirect('teacherprf')
-    else:
-        return redirect('teacherprf')
+def admteacherdelete(request,id):
+    user=teacherlogin.objects.get(id=id)
+    user.delete()
+    return redirect('teacherprf')
+
+# @login_required(login_url='loginview')
+# def admteacherdelete(request,user_id):
+#     t=teacherlogin.objects.get(user_id=user_id)
+#     s=Login.objects.get(teacher=t)
+#     if request.method=='POST':
+#         s.delete()
+#         messages.info(request, 'teacher deleted successfully')
+#         return redirect('teacherprf')
+#     else:
+#         return redirect('teacherprf')
 
 
 # Course
@@ -114,23 +115,24 @@ def admstudentupdate(request,id):
             return redirect('studentsprf')
     return render(request,'Admin/updatestudent.html',{'form':form})
 
-# def admstudentdelete(request,id):
-#     user=studentadd.objects.get(id=id)
-#     user.delete()
-#     return redirect('studentsprf')
-
 @login_required(login_url='loginview')
 def admstudentdelete(request,id):
-    data = studentadd.objects.get(id=id)
-    print(data)
-    s=Login.objects.get(student=data)
-    print(s)
-    if request.method=='POST':
-        s.delete()
-        messages.info(request, 'student deleted successfully')
-        return redirect('studentsprf')
-    else:
-        return redirect('studentsprf')
+    user=studentadd.objects.get(id=id)
+    user.delete()
+    return redirect('studentsprf')
+
+# @login_required(login_url='loginview')
+# def admstudentdelete(request,id):
+#     data = studentadd.objects.get(id=id)
+#     print(data)
+#     s=Login.objects.get(student=data)
+#     print(s)
+#     if request.method=='POST':
+#         s.delete()
+#         messages.info(request, 'student deleted successfully')
+#         return redirect('studentsprf')
+#     else:
+#         return redirect('studentsprf')
 
 
 # Notification

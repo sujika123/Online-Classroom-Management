@@ -88,16 +88,16 @@ def tcrstudentupdate(request,id):
 #     user.delete()
 #     return redirect('tviewstudents')
 
-@login_required(login_url='loginview')
-def tcrstudentdelete(request,id):
-    sd=studentadd.objects.get(id=id)
-    s=Login.objects.get(student=sd)
-    if request.method=='POST':
-        s.delete()
-        messages.info(request, 'student deleted successfully')
-        return redirect('tviewstudents')
-    else:
-        return redirect('tviewstudents')
+# @login_required(login_url='loginview')
+# def tcrstudentdelete(request,id):
+#     sd=studentadd.objects.get(id=id)
+#     s=Login.objects.get(student=sd)
+#     if request.method=='POST':
+#         s.delete()
+#         messages.info(request, 'student deleted successfully')
+#         return redirect('tviewstudents')
+#     else:
+#         return redirect('tviewstudents')
 
 
 @login_required(login_url='loginview')

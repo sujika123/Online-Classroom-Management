@@ -26,7 +26,6 @@
                         <th>Semester</th>
                         <th>Department</th>
                         <th>status</th>
-                        <th>status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -44,16 +43,7 @@
                          <td>{{i.semester}}</td>
                          <td>{{i.dept}}</td>
                          <td><a href="{% url 'tcrstudentupdate' i.id %}" ><button class="btn btn-info" type="submit">Update</button></a></td>
-<!--                            <td><a href="{% url 'tcrstudentdelete' i.id %}"><button class="btn btn-danger" type="submit">Delete</button></a></td>-->
 
-                         <td>
-                            <form action="{% url 'tcrstudentdelete' i.id %}" method="post" enctype="multipart/form-data">
-                              {% csrf_token %}
-                              <input type="hidden" name="student" value="{{i.id}}" />
-                              <button type="submit" class="btn btn-danger">Delete</button>
-
-                            </form>
-                         </td>
                     </tr>
                     {% endfor %}
 
@@ -95,7 +85,7 @@
 <!--    <td>{{i.semester}}</td>-->
 <!--    <td>{{i.dept}}</td>-->
 <!--    <td><a href="{% url 'tcrstudentupdate' i.id %}" ><button class="btn btn-info" type="submit">Update</button></a></td>-->
-<!--    <td><a href="{% url 'tcrstudentdelete' i.id %}"><button class="btn btn-danger" type="submit">Delete</button></a></td>-->
+<!--    <td><a href="#"><button class="btn btn-danger" type="submit">Delete</button></a></td>-->
 
 
 <!--  </tr>-->
