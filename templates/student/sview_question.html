@@ -13,6 +13,9 @@
                 <div class="task_list_main">
                     <ul class="task_list">
 
+                        <div align="right" id="displaytimer" style="color:black;"><b>Timer: 0 seconds</b></div>
+                        <br>
+
                         <form method="post" style="color:black;margin-left:15px;">
                             {% csrf_token %}
                        <div class="col-md-12">
@@ -38,15 +41,37 @@
 
             </ul>
 
+                <input id='timer' type='hidden' name="timer" value="">
+    <br>
+
                 <div class="read_more">
                     <div class="center"><button class="main_bt read_bt" type = "submit">Submit</button></div>
 
                 </div>
                     </form>
+
+                   {% block script %}
+        <script>
+
+            console.log('hello world')
+            const timer=document.getElementById('displaytimer')
+            console.log(timer.textContent)
+            const inputtag = document.getElementById('timer')
+
+            t=0
+            setInterval(()=>{
+                t+=1
+                timer.innerHTML ="<b>Timer: " +t+" seconds</b>"
+                inputtag.value = t
+            },1000)
+        </script>
+       {% endblock script %}
+
             </div>
         </div>
     </div>
-
+    </div>
+</div>
 
 
 
